@@ -14,6 +14,14 @@ if ($conn->connect_error) {
 $ssn = $_GET['ssn'];
 $password = $_GET['password'];
 
+/*
+
+Login: 
+SSN: 692-25-2221
+password: 4HfEMfK
+
+From DB: insert into FAKE (ssn, first_name, last_name, email, gender, cc_number, cc_vendor, password) values ('692-25-2221', 'Sean', 'Griffin', 'sgriffinr6@github.com', 'Male', '67636098464077457', 'maestro', '4HfEMfK');
+*/ 
 
 //get rid of whitespace 
 trim($ssn);
