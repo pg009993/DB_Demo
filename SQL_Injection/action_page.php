@@ -19,10 +19,9 @@ $password = $_GET['password'];
 trim($ssn);
 trim($password);
 
-
+//SQL injection: 1' or 1=1 -- -
+//Code below ALLOWS SQL injection
 $sql = "SELECT * FROM FAKE WHERE password = '" . $password . "' AND ssn = '" . $ssn . "';";
-
-//"SELECT * FROM FAKE ssn = '" . $ssn . "' AND password='" . $password . "';";
 
 $result = $conn->query($sql);
 
@@ -34,5 +33,24 @@ if ($result->num_rows > 0) {
 } else {
     echo "Sorry. Try Again.";
 }
+
+/*
+//Code below PREVENTS SQL injection. 
+$sql = $pdo->prepare('SELECT * FROM FAKE WHERE ssn = :ssn AND password=:password');
+
+$sql->execute(array('name' => $name));
+
+foreach ($sql as $row) {
+	  // output data of each row
+    while($row = $result->fetch_assoc()) {
+        echo "SSN: " . $row["ssn"]. " Name: " . $row["first_name"]. " " . $row["last_name"]. " E-mail: " .$row["email"] . " Gender: " . $row["gender"] . " Credit Card Number: " . $row["cc_number"] . " Bank: " . $row["cc_vendor"] . "<br>";
+    }
+} else {
+    echo "Sorry. Try Again.";
+
+}
+*/
+
+
 $conn->close();
 ?>
