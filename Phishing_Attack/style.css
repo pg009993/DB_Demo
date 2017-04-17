@@ -1,4 +1,7 @@
-update{
-    text-align: center;
-    text-emphasis: bold; 
+p{
+ text-align: center;
+}
+
+form{
+	text-align: center;
 }
